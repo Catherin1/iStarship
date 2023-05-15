@@ -1,0 +1,71 @@
+<view>
+<view class="top">
+    <image class="image1" src="/images/lookup.png" bindtap="Search"></image>
+    <text>--点击以获取查询类型--</text>
+    <image class="topwrite" src="/images/A.png" animation="{{animWrite}}" bindtap="AddInfo"></image>
+</view>
+    <view class="line"></view>
+</view>
+
+<!--pages/forum/forum.wxml-->
+<wxs module="subContent">
+    module.exports = function(val){ // 最多显示80词
+        if(val.length > 80){
+            return val.substring(0, 80)+'...'
+        }
+        else return val
+    }
+</wxs>
+
+<scroll-view class="container" scroll-y="true" scroll-top="true" scroll-with-animation="true" bindrefresherpulling="Refresh">
+    <block wx:for="{{openid}}" wx:for-index="idx" wx:for-item="item">
+        <view class="feed-item">
+            <view class="feed-source">
+                <view class="avater">
+                <!--这里放头像-->
+                    <image src="{{wxImage[idx]}}" class="avatarimage"></image>
+                </view>
+                <!--这里放微信名称-->
+                <text>{{wxname[idx]}}</text>
+                <view class="Apper">{{dates[idx]}}</view>
+            </view>
+            <!--主要内容-->
+            <view class="feed-content" data-idx="{{idx}}" bindtap="Showdetail">
+                <!--事件类型-->
+                <view class="Type_Location">
+                    <text>#{{eventype[idx]}}</text>
+                    <image src="/images/icon/location.png"></image>
+                    <text>{{locationname[idx]}}</text>
+                </view>
+                <!--标题-->
+                <!--<view class="Title">
+                    <block class="titlein">
+                        <text>{{title[idx]}}</text>
+                    </block>
+                </view>-->
+                <!--内容描述（去掉标题直接显示内容）-->
+                <view class="content-body">
+                    <text>{{subContent(content[idx])}}</text>
+                </view>
+                <!--简要交代点赞数和评论数（在点赞数和评论数前加入图标）-->
+                <view class="BriefIn">
+                    <image src="/images/icon/like_lll.png"></image>
+                    <text class="brtpro">{{progressing[idx]}}</text>
+                </view>
+                <view class="BriefIn2">
+                    <image src="/images/icon/comment.png"></image>
+                    <text class="brtin" space="ensp">{{likes[idx]}}{{comments[idx].length}}</text>
+                </view>
+                
+            </view>
+        </view>
+    </block>
+</scroll-view>
+<view class="Bottom">~已经到底了哦</view>
+
+<!--<view>
+  <image src="/images/search.png" class="img-style" animation="{{animWrite}}" bindtap="Search"></image>
+  <image src="/images/Write.png" class="img-style" animation="{{animTranspond}}" bindtap="AddInfo"></image>
+  <image src="/images/A.png" class="img-switch-style" animation="{{animPlus}}" bindtap="plus"></image>
+</view>-->
+

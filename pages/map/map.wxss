@@ -1,0 +1,32 @@
+/* pages/map/map.wxss */
+map{
+  width: 100%;
+  height: 87vh;
+}
+info{
+  height: 15vh;
+  padding: 32rpx;
+  background-color: white;
+}
+.title{
+  font-weight: normal;
+  font-size: 32rpx;
+  margin: 32rpx;
+  text-align: center;
+  border: 2px solid #6cb5dc;
+  border-radius: 20rpx;
+  width:550rpx;
+  height:60rpx;
+}
+.address{
+  font-size: 24rpx;
+  margin: 32rpx;
+}
+.navigate{
+  position: absolute;
+  right: 38rpx;
+  bottom: 22rpx;
+}
+.navigate image{
+width: 100rpx;
+}
